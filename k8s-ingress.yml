@@ -22,7 +22,7 @@ spec:
           - path: /slee
             pathType: Prefix
             backend:
-              serivce:
+              service:
                 name: slee-svc-dep
                 port:
-                  number: 80
+                  number: 80  

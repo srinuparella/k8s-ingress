@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind : Deployment
 metadata:
-  name: dep-resource
+  name: slee-dep
   namespace: prod
   annotations:
     kubernetes.io/change-cause: "slee-image"

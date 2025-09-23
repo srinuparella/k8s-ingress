@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind : Deployment
 metadata:
-  name: srinu-svc-dep
+  name: srinu-dep
   namespace: prod
   annotations:
     kubernetes.io/change-cause: "srinu-image"

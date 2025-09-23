@@ -9,8 +9,6 @@ spec:
     web: webexpre
   ports:
     - name: http
+      protocol: TCP      # explicitly define protocol
       port: 80
-      # protocol: TCP
       targetPort: 80
-
-

@@ -1,43 +1,11 @@
-# apiVersion: networking.k8s.io/v1
-# kind: Ingress
-# metadata:
-#   name: ingress-cont
-#   namespace: prod
-#   annotations: 
-#      alb.ingress.kubernetes.io/scheme: internet-facing
-#      alb.ingress.kubernetes.io/target: ip
-# spec:
-#   ingressClassName: alb
-#   rules:
-#     - host: www.yourfeatureworld.com
-#       http:
-#         paths:
-#           - path: /srinu
-#             pathType: Prefix
-#             backend:
-#               service: 
-#                 name: srinu-svc
-#                 port:
-#                   number: 80
-#         # paths:
-#           - path: /slee
-#             pathType: Prefix
-#             backend:
-#               service:
-#                 name: slee-svc
-#                 port:
-#                   number: 80  
-
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-cont
   namespace: prod
-  annotations:
-    kubernetes.io/ingress.class: alb
-    alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+  annotations: 
+     alb.ingress.kubernetes.io/scheme: internet-facing
+     alb.ingress.kubernetes.io/target: ip
 spec:
   ingressClassName: alb
   rules:
@@ -47,14 +15,46 @@ spec:
           - path: /srinu
             pathType: Prefix
             backend:
-              service:
+              service: 
                 name: srinu-svc
                 port:
                   number: 80
+        # paths:
           - path: /slee
             pathType: Prefix
             backend:
               service:
                 name: slee-svc
                 port:
-                  number: 80
+                  number: 80  
+
+# ---
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-cont
+#   namespace: prod
+#   annotations:
+#     kubernetes.io/ingress.class: alb
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+# spec:
+#   ingressClassName: alb
+#   rules:
+#     - host: www.yourfeatureworld.com
+#       http:
+#         paths:
+#           - path: /srinu
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: srinu-svc
+#                 port:
+#                   number: 80
+#           - path: /slee
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: slee-svc
+#                 port:
+#                   number: 80

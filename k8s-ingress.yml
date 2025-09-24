@@ -21,7 +21,7 @@ spec:
                   number: 80
         # paths:
           - path: /slee
-            pathType: Prefix
+            pathType: Prefix  
             backend:
               service:
                 name: slee-svc

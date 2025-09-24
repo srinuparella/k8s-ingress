@@ -19,7 +19,6 @@ spec:
                 name: srinu-svc
                 port:
                   number: 80
-        # paths:
           - path: /slee
             pathType: Prefix  
             backend:

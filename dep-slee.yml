@@ -30,7 +30,7 @@ spec:
           image: srinuparella/cssi:slee
           ports:
             - containerPort: 80
-              hostport: 80
+              # hostport: 80
               protocol: TCP
           startupProbe:
             httpGet:

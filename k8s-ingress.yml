@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-    - host: www.yourfeatureworld.com
+    # - host: www.yourfeatureworld.com
       http:
         paths:
           - path: /srinu

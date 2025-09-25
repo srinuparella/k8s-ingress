@@ -3,9 +3,14 @@ kind: Ingress
 metadata:
   name: ingress-cont
   namespace: prod
-  annotations: 
+  annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    # Actions to rewrite /slee and /srinu paths to /
+    alb.ingress.kubernetes.io/actions.slee: >
+      {"Type":"forward","TargetGroupArn":"<TARGET_GROUP_ARN_FOR_SLEE>"}
+    alb.ingress.kubernetes.io/actions.srinu: >
+      {"Type":"forward","TargetGroupArn":"<TARGET_GROUP_ARN_FOR_SRINU>"}
 spec:
   ingressClassName: alb
   defaultBackend:
@@ -16,20 +21,53 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /slee
             pathType: Prefix
             backend:
               service:
-                name: srinu-svc
+                name: "slee"   # ignored, action used
                 port:
                   number: 80
-          - path: /
+          - path: /srinu
             pathType: Prefix
             backend:
               service:
-                name: slee-svc
+                name: "srinu"  # ignored, action used
                 port:
                   number: 80
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: ingress-cont
+#   namespace: prod
+#   annotations: 
+#     alb.ingress.kubernetes.io/scheme: internet-facing
+#     alb.ingress.kubernetes.io/target-type: ip
+# spec:
+#   ingressClassName: alb
+#   defaultBackend:
+#     service:
+#       name: slee-svc
+#       port:
+#         number: 80
+#   rules:
+#     - http:
+#         paths:
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: srinu-svc
+#                 port:
+#                   number: 80
+#           - path: /
+#             pathType: Prefix
+#             backend:
+#               service:
+#                 name: slee-svc
+#                 port:
+#                   number: 80
 
 # # ---
 # # apiVersion: networking.k8s.io/v1

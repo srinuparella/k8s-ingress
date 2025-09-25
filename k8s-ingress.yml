@@ -6,7 +6,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    # Path rewrite actions
+    # Path rewrites for ALB
     alb.ingress.kubernetes.io/actions.slee: >
       {"Type":"forward","TargetGroupArn":"<TARGET_GROUP_ARN_FOR_SLEE>"}
     alb.ingress.kubernetes.io/actions.srinu: >
@@ -25,14 +25,14 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: slee-svc   # must match actual service
+                name: slee-svc
                 port:
                   number: 80
           - path: /srinu
             pathType: Prefix
             backend:
               service:
-                name: srinu-svc  # must match actual service
+                name: srinu-svc
                 port:
                   number: 80
 

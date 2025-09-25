@@ -11,4 +11,4 @@ spec:
     - name: http
       protocol: TCP      # explicitly define protocol
       port: 80
-      targetPort: 9090
+      targetPort: 80
